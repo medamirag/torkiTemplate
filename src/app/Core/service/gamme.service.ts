@@ -17,7 +17,7 @@ gammes:Gamme[]=[
   }
   getGammeByID(gamme:string){
     
-    return this.gammes.filter(g=>g.gamme==gamme)
+    return this.gammes.find(g=>g.gamme==gamme)
   }
 
 

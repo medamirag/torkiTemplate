@@ -15,4 +15,7 @@ export class CouleurService {
   getAllCouleurs():Observable<Couleur[]>{
     return new Observable(data=>data.next(this.couleurs))
   }
+  getCouleurByIDService(couleur:string):Observable<Couleur>{
+    return new Observable(data=>data.next(this.couleurs.find(x=>x.couleur==couleur)))
+  }
 }

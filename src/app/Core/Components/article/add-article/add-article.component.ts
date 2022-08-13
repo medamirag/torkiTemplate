@@ -8,6 +8,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { PopupBesoinComponent } from '../../besoin/popup-besoin/popup-besoin.component';
 import { Article } from 'src/app/Core/model/article';
 import { Besoin } from 'src/app/Core/model/besoin';
+import { ArticleService } from 'src/app/Core/service/article.service';
 
 @Component({
   selector: 'app-add-article',
@@ -17,13 +18,19 @@ import { Besoin } from 'src/app/Core/model/besoin';
 export class AddArticleComponent implements OnInit {
   couleurs!:Couleur[]
   gammes!:Gamme[]
-  article!:Article
-  besoin!:Besoin
-  constructor(private gammeService:GammeService,private couleurService:CouleurService,public dialog: MatDialog) { }
+  auto:boolean=false
+  gamme:string
+  couleur:string
+  article:Article={article:null,automatique:null,besoin:null,dimension:null,couleur:null,gamme:null}
+  besoins:Besoin[]=[]
+  
+  constructor(private articleService : ArticleService,private gammeService:GammeService,private couleurService:CouleurService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllCouleursController()
     this.getAllGammesController()
+    console.log(this.article);
+    
   }
 getAllCouleursController(){
   this.couleurService.getAllCouleurs().subscribe(data=>this.couleurs=data)
@@ -31,21 +38,41 @@ getAllCouleursController(){
 getAllGammesController(){
   this.gammeService.getAllGammes().subscribe(data=>this.gammes=data)
 }
+deleteBesoin(){
+  this.besoins.pop()
+}
     
 openDialog(): void {
   
   const dialogRef = this.dialog.open(PopupBesoinComponent, {
-    width: '250px',
+    width: '300px',
     data: {mp:null,article:this.article},
   });
-
+ 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    this.besoin = result;
-    console.log('res');
-    console.log(this.besoin);
+    console.log("this.article");
+    console.log(this.article);
+
+    if(result!=null){
+      this.besoins.push(result)
+    }
 
   });
+}
+saveArticleController(){
+  this.getGammeByIDController()
+  this.getCouleurByIDController()
+  this.article.automatique=this.auto
+  console.log(this.article);
+  console.log("beforepushing");
+  
+  this.articleService.saveArticleService(this.article)
+}
+getGammeByIDController(){
+ this.article.gamme= this.gammeService.getGammeByID(this.gamme)
+}
+getCouleurByIDController(){
+ this.couleurService.getCouleurByIDService(this.couleur).subscribe(data=>this.article.couleur=data)
 }
 }
 

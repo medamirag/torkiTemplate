@@ -44,4 +44,9 @@ articles:Article[]=[
   getAllArticlesService():Observable<Article[]>{
     return new Observable(data=>data.next(this.articles))
   }
+  saveArticleService(article:Article){
+console.log("pushing");
+console.log(this.articles);
+    this.articles.push(article)
+  }
 }

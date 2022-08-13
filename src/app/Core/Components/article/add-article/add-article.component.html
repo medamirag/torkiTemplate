@@ -16,7 +16,6 @@
           </div>
           <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
 
-            <form>
               <div class="relative w-full mb-3">
                 <label
                   class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -28,6 +27,7 @@
                   type="text"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Name"
+                  [(ngModel)]="article.article"
                 />
               </div>
   
@@ -39,7 +39,7 @@
                   Gamme
                 </label>
                 <mat-form-field appearance="fill">
-                  <mat-select>
+                  <mat-select [(value)]="gamme">
                     <mat-option *ngFor="let gamme of gammes" value="gamme.gamme">{{gamme.gamme}}</mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -53,28 +53,18 @@
                   Couleur
                 </label>
                 <mat-form-field appearance="fill">
-                  <mat-select>
+                  <mat-select [(value)]="couleur">
                     <mat-option *ngFor="let couleur of couleurs" value="couleur.couleur">{{couleur.couleur}}</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <!-- <mat-slider min="1" max="100" step="1" value="50"></mat-slider> -->
 
               </div>
-  
-              <div class="relative w-full mb-3">
-                <label
-                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
-                  Besoin
-                </label>
-                <button type='button'  mat-raised-button (click)="openDialog()">Pick one</button>
-              </div>
-
               <div>
                 <label class="inline-flex items-center cursor-pointer">
                   <input
                     id="customCheckLogin"
+                    [(ngModel)]="auto"
                     type="checkbox"
                     class="form-checkbox border-0 text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 rounded"
                   />
@@ -84,16 +74,39 @@
                   </span>
                 </label>
               </div>
-  
+  <br>
+              <div class="relative w-full mb-3">
+                <label
+                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  htmlFor="grid-password"
+                >
+                  Besoin
+                </label>
+                <button type='button'  mat-raised-button (click)="openDialog()">Ajouter </button>
+                &nbsp;
+
+                &nbsp;
+
+                <button type='button'  mat-raised-button (click)="deleteBesoin()">Supprimer</button>
+                
+                <ul>
+                  <li *ngFor="let besoin of besoins">
+                    {{besoin.mp.mp}} :  {{besoin.quantite}}
+
+                  </li>
+                </ul>
+              </div>
+
+             
               <div class="text-center mt-6">
                 <button
+                (click)="saveArticleController()"
                   class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                   type="button"
                 >
                   Valider
                 </button>
               </div>
-            </form>
           </div>
         </div>
       </div>

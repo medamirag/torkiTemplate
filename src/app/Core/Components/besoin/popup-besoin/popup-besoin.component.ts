@@ -18,7 +18,7 @@ mp : Mp;
 quantite : number;
   constructor(private mpService:MpService,
     public dialogRef: MatDialogRef<PopupBesoinComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Besoin,
+    @Inject(MAT_DIALOG_DATA) public data: Besoin=null,
   ) 
   {}
   ngOnInit(): void {
@@ -30,10 +30,15 @@ getAllMpController(){
 findMpByNameController(mp:string){
   this.mpService.findMpByNameService(mp).subscribe(data=>this.mp=data)
 }
-  closeDiag(): void {
+  validateDiag(): void {
     this.data.mp=this.mp;
     this.data.quantite=this.quantite;
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
+    
+  }
+  cancelDiag(): void {
+    this.dialogRef.close(null);
+    
   }
   doSomething(){
     console.log(this.mp);
