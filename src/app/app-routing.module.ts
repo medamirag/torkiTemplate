@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AddArticleComponent } from "./core/components/article/add-article/add-article.component";
 import { ArticleComponent } from "./Core/Components/article/article.component";
 import { BesoinComponent } from "./Core/Components/besoin/besoin.component";
 import { DepotComponent } from "./Core/Components/depot/depot.component";
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: "of", component: OfComponent },
       { path: "mp", component: MpComponent },
       { path: "article", component: ArticleComponent },
+      { path: "addarticle", component: AddArticleComponent },
       { path: "gamme", component: GammeComponent },
       { path: "operation", component: OperationComponent },
       { path: "depot", component: DepotComponent },

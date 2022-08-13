@@ -55,6 +55,14 @@ import { OperationComponent } from './Core/Components/operation/operation.compon
 import { DepotComponent } from './Core/Components/depot/depot.component';
 import { BesoinComponent } from './Core/Components/besoin/besoin.component';
 import { StockComponent } from './Core/Components/stock/stock.component';
+import { AddArticleComponent } from './core/components/article/add-article/add-article.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule}  from '@angular/material/select';
+import { PopupBesoinComponent } from './core/components/besoin/popup-besoin/popup-besoin.component';
+import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { FormsModule } from "@angular/forms";
+
+
 
 @NgModule({
   declarations: [
@@ -100,8 +108,10 @@ import { StockComponent } from './Core/Components/stock/stock.component';
     DepotComponent,
     BesoinComponent,
     StockComponent,
+    AddArticleComponent,
+    PopupBesoinComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule,AppRoutingModule, BrowserAnimationsModule,MatSelectModule,MatDialogModule],
   providers: [],
   bootstrap: [AppComponent],
 })
