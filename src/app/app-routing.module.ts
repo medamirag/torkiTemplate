@@ -33,7 +33,7 @@ const routes: Routes = [
   // Torki Portes
   {
     path: "torki",
-    component: AdminComponent,
+    component: LandingComponent,
     children: [
       { path: "of", component: OfComponent },
       { path: "mp", component: MpComponent },
@@ -70,10 +70,19 @@ const routes: Routes = [
     ],
   },
   // no layout views
-  { path: "profile", component: ProfileComponent },
-  { path: "landing", component: LandingComponent },
-  { path: "", component: IndexComponent },
-  { path: "**", redirectTo: "", pathMatch: "full" },
+  {
+    path: "",
+    component: LandingComponent,
+    children: [
+      { path: "home", component: IndexComponent },
+      // { path: "register", component: RegisterComponent },
+      // { path: "", redirectTo: "login", pathMatch: "full" },
+    ],
+  },
+  // { path: "profile", component: ProfileComponent },
+  // { path: "landing", component: LandingComponent },
+  // { path: "", component: IndexComponent },
+  // { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 
 @NgModule({

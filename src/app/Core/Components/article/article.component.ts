@@ -9,7 +9,6 @@ import { ArticleService } from '../../service/article.service';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-
   constructor(private articleService:ArticleService) { }
 articles!:Article[];
 couleurs:Couleur[]=[
@@ -26,5 +25,6 @@ couleurs:Couleur[]=[
   getAllArticleController(){
 this.articleService.getAllArticlesService().subscribe(data=>this.articles=data)
   }
+
 
 }

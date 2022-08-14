@@ -61,6 +61,7 @@ import {MatSelectModule}  from '@angular/material/select';
 import { PopupBesoinComponent } from './core/components/besoin/popup-besoin/popup-besoin.component';
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { FormsModule } from "@angular/forms";
+import { ArticleDropdownComponent } from './core/components/article/article-dropdown/article-dropdown.component';
 
 
 
@@ -110,6 +111,7 @@ import { FormsModule } from "@angular/forms";
     StockComponent,
     AddArticleComponent,
     PopupBesoinComponent,
+    ArticleDropdownComponent,
   ],
   imports: [BrowserModule, FormsModule,AppRoutingModule, BrowserAnimationsModule,MatSelectModule,MatDialogModule],
   providers: [],

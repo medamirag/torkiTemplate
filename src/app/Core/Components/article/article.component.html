@@ -1,6 +1,6 @@
 <div
   class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
-  [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+  [ngClass]="color === 'light' ? 'bg-white' : 'bg-blueGray-600 text-white'"
 >
   <div class="rounded-t mb-0 px-4 py-3 border-0">
     <div class="flex flex-wrap items-center">
@@ -9,7 +9,7 @@
           class="font-semibold text-lg"
           [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
         >
-          Liste des Articles
+          Liste des Articles &nbsp; <button class="bg-orange-500 text-white active:bg-orange-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"            [routerLink]="['/torki/addarticle']">Nouveau</button>
         </h3>
       </div>
     </div>
@@ -120,8 +120,12 @@
             <td
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
             >
-              <app-table-dropdown></app-table-dropdown>
-            </td>
+            <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+              Modifier</button>&nbsp; <button class="bg-amber-500 text-white active:bg-amber-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+  Supprimer</button>&nbsp; <button class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+    Voir</button>
+
+          </td>
           </tr>
         </ng-container>
 

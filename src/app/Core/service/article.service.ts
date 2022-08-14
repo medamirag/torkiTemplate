@@ -40,7 +40,8 @@ articles:Article[]=[
   {article:"Porte1",automatique:true,besoin:this.besoin1,couleur:this.couleur1,dimension:"l*L",gamme:this.gamme1},
   {article:"Porte2",automatique:false,besoin:this.besoin2,couleur:this.couleur2,dimension:"l*L",gamme:this.gamme2},
 ]
-  constructor() { }
+  constructor() { console.log("callled again");
+  }
   getAllArticlesService():Observable<Article[]>{
     return new Observable(data=>data.next(this.articles))
   }
